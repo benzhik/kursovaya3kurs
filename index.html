@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Туристические города</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        h1 { text-align: center; }
+        .city-card { 
+            background-color: #f9f9f9; 
+            padding: 20px; 
+            margin-bottom: 15px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .city-card h2 { margin: 0; }
+        .city-card p { color: #555; }
+        .button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Доступные города для туров</h1>
+    <div id="cities-list">
+        <!-- Города будут вставляться сюда -->
+    </div>
+
+    <script>
+        // Список городов
+        const cities = [
+            { id: 1, name: "Дубай", description: "Экзотический тур в Дубай, пляжи и современная архитектура." },
+            { id: 2, name: "Париж", description: "Романтический тур по Парижу с посещением Эйфелевой башни и Лувра." },
+            { id: 3, name: "Токио", description: "Путевка в Токио — погрузитесь в культуру Японии и современные технологии." }
+        ];
+
+        const citiesList = document.getElementById('cities-list');
+
+        // Отображаем города
+        cities.forEach(city => {
+            const div = document.createElement('div');
+            div.classList.add('city-card');
+            div.innerHTML = `
+                <h2>${city.name}</h2>
+                <p>${city.description}</p>
+                <button class="button" onclick="addReview(${city.id})">Добавить отзыв</button>
+            `;
+            citiesList.appendChild(div);
+        });
+
+        // Функция для добавления отзыва
+        function addReview(cityId) {
+            const review = prompt("Введите ваш отзыв о городе:");
+            if (review) {
+                alert(`Ваш отзыв о городе ${cityId}: ${review}`);
+            }
+        }
+    </script>
+</body>
+</html>
